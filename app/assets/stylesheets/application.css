@@ -13,13 +13,8 @@
  *= require_tree .
  *= require_self
  *= require bootstrap
+ *= require sprockets-rails
  */
 
-body{
-  background-color: blue;
-}
- /* #tablecontainer {
-  overflow-x: auto;
-  white-space: nowrap;
-  max-width: 100%;
- } */
+
+
