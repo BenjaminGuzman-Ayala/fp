@@ -3,11 +3,13 @@ class StudentsController < ApplicationController
 
   # GET /students or /students.json
   def index
-    @students = Student.all
+    @q = Student.ransack(params[:q])
+    @students = @q.result(:distinct => true).includes(:school)
   end
 
   # GET /students/1 or /students/1.json
   def show
+    @student = Student.find(params[:id])
   end
 
   # GET /students/new
@@ -17,6 +19,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    @student = Student.find(params[:id])
   end
 
   # POST /students or /students.json
@@ -65,6 +68,6 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :school_id, :parent_first_name, :parent_last_name, :parent_relationship, :parent_phone_number, :emergency_first_name, :emergency_last_name, :emergency_phone, :pre_survey, :post_survey, :interest_survey, :iep_or_504, :progress_report_1, :progress_report_2, :progress_report_3, :progress_report_4, :user_id)
+      params.require(:student).permit(:id, :first_name, :last_name, :school_id, :parent_first_name, :parent_last_name, :parent_relationship, :parent_phone_number, :emergency_first_name, :emergency_last_name, :emergency_phone, :pre_survey, :post_survey, :interest_survey, :iep_or_504, :progress_report_1, :progress_report_2, :progress_report_3, :progress_report_4, :user_id)
     end
 end

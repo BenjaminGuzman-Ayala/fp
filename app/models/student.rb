@@ -33,12 +33,18 @@
 #  school_id  (school_id => schools.id)
 #
 class Student < ApplicationRecord
-  has_many :enrollments
+  has_many :enrollments, dependent: :destroy
   has_many :programs, through: :enrollments
   belongs_to :school
- 
   def full_name
     "#{first_name} #{last_name}" 
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["first_name"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["school"]
+  end
 end

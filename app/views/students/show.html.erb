@@ -1,10 +1,67 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @student %>
+<div class="card p-4">
+  <div class="card-body">
+    <div id="tablecontainer" style="overflow-x: auto; white-space: nowrap; max-width: 100%;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">School</th>
+            <th scope="col">Parent/Guardian First Name</th>
+            <th scope="col">Parent/Guardian Last Name</th>
+            <th scope="col">Parent/Guardian Relationship</th>
+            <th scope="col">Parent/Guardian Phone #</th>
+            <th scope="col">Emergency First Name</th>
+            <th scope="col">Emergency Last Name</th>
+            <th scope="col">Emergency Phone #</th>
+            <th scope="col">IEP or 504</th>
+            <th scope="col">Interest Survey</th>
+            <th scope="col">Pre Survey</th>
+            <th scope="col">Post Survey</th>
+            <th scope="col">Progress Report 1</th>
+            <th scope="col">Progress Report 2</th>
+            <th scope="col">Progress Report 3</th>
+            <th scope="col">Progress Report 4</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @student.first_name %></td>
+            <td><%= @student.last_name %></td>
+            <td><%= @student.school.name %></td>
+            <td><%= @student.parent_first_name %></td>
+            <td><%= @student.parent_last_name %></td>
+            <td><%= @student.parent_relationship %></td>
+            <td><%= @student.parent_phone_number %></td>
+            <td><%= @student.emergency_first_name %></td>
+            <td><%= @student.emergency_last_name %></td>
+            <td><%= @student.emergency_phone %></td>
+            <td><%= @student.iep_or_504 %></td>
+            <td><%= @student.interest_survey %></td>
+            <td><%= @student.pre_survey %></td>
+            <td><%= @student.post_survey %></td>
+            <td><%= @student.progress_report_1 %></td>
+            <td><%= @student.progress_report_2 %></td>
+            <td><%= @student.progress_report_3 %></td>
+            <td><%= @student.progress_report_4 %></td>
+            <td>
+              <button class="btn btn-secondary">
+                <%= link_to "Edit", edit_student_path(@student.id), style: "color: white; text-decoration: none;" %>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<div>
-  <%= link_to "Edit this student", edit_student_path(@student) %> |
-  <%= link_to "Back to students", students_path %>
+    <div style="display: flex; margin-top: 10px;">
+      <button class="btn btn-secondary" style="margin-right: 5px;">
+        <%= link_to "Back to students", students_path, style: "color:white; text-decoration: none;" %>
+      </button>
 
-  <%= button_to "Destroy this student", @student, method: :delete %>
+      <%= button_to "Destroy this student", @student, method: :delete, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete }, class: "btn btn-danger", style: "color:white; text-decoration: none;" %>
+    </div>
+  </div>
 </div>

@@ -3,8 +3,11 @@
 <%= render "form", curriculum: @curriculum %>
 
 <br>
+<div style="display: flex; gap: 1rem; margin-bottom: 25px;">
+  <button class="btn btn-secondary"><%= link_to "Show", @curriculum, style: "color:white; text-decoration: none;" %>
+  </button>
 
-<div>
-  <%= link_to "Show this curriculum", @curriculum %> |
-  <%= link_to "Back to curriculums", curriculums_path %>
+  <button class="btn btn-secondary" style="margin-right: 5px;">
+  <%= link_to "Back to students", curriculums_path, style: "color:white; text-decoration: none;" %>
+  </button>
 </div>

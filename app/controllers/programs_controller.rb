@@ -3,7 +3,8 @@ class ProgramsController < ApplicationController
 
   # GET /programs or /programs.json
   def index
-    @programs = Program.all
+    @q = Program.ransack(params[:q])
+    @programs = @q.result.includes(:school)
   end
   def show
     @program = Program.find(params[:id])
@@ -35,10 +36,7 @@ class ProgramsController < ApplicationController
   # POST /programs or /programs.json
   def create
     @program = Program.new(program_params)
-    # students_to_add = Student.where(id: params[:student_ids])
-
-    # @program.students << students_to_add
-
+ 
     respond_to do |format|
       if @program.save
         format.html { redirect_to program_url(@program), notice: "Program was successfully created." }

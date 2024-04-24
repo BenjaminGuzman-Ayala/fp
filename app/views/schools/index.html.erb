@@ -1,14 +1,30 @@
-<p style="color: green"><%= notice %></p>
+<div class="card p-4 mb-4 shadow">
+  <div class="card-body">
+    <p style="color: green"><%= notice %></p>
 
-<h1>Schools</h1>
+    <h1>Schools</h1>
+    <%#= search_form_for @q do |f| %>
+    <!---->
+    <%#= f.text_field :school_name_cont, class: "p-1", :placeholder => "Type school name" %>
+    <!---->
+    <%#= f.submit :class => "btn btn-primary btn-block" %>
+    <!---->
+    <!--<a href="/students">Clear filters</a>-->
+    <!--   <button class="btn btn-danger" style="margin-right: 5px;">-->
+    <%#= link_to "Clear", students_path, style: "color:white; text-decoration: none;" %>
+    <!--  </button>-->
+    <%# end %>
 
-<div id="schools">
-  <% @schools.each do |school| %>
-    <%= render school %>
-    <p>
-      <%= link_to "Show this school", school %>
-    </p>
-  <% end %>
+    <div id="schools">
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <% @schools.each do |school| %>
+          <%= render school %>
+          <p></p>
+        <% end %>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Create new school", new_school_path, style: "text-decoration: none; color: white;" %>
+    </button>
+  </div>
 </div>
-
-<%= link_to "New school", new_school_path %>

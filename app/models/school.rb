@@ -19,7 +19,11 @@
 #
 class School < ApplicationRecord
   belongs_to :user
-  has_many :programs
-  has_many :students
+  has_many :programs, dependent: :destroy
+  has_many :students, dependent: :destroy
   has_many :curriculums
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
 end

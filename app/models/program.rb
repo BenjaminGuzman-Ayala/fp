@@ -26,11 +26,18 @@
 #
 class Program < ApplicationRecord
   has_many :enrollments
+  belongs_to :user
   has_many :students, through: :enrollments
-  
   belongs_to :school
   belongs_to :curriculum
 
+  def self.ransackable_attributes(auth_object = nil)
+    [""]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["school"]
+  end
 
 
 end

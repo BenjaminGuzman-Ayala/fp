@@ -11,17 +11,21 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-control">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+
+    <%= form.label :grade_level %>
+    <%= form.text_field :grade_level, class: "form-control" %>
+  </div>
+  </div>
   </div>
 
-  <div>
-    <%= form.label :grade_level, style: "display: block" %>
-    <%= form.text_field :grade_level %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div row>
+    <div class="col">
+    <%= form.submit class: "btn btn-dark mt-3" %>
+    </div>
   </div>
 <% end %>

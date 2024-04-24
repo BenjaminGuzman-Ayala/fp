@@ -1,10 +1,31 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @program %>
+<div class="card p-4 mb-4 shadow">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Facilitator</th>
+          <th scope="col">Curriculum</th>
+          <th scope="col">Season</th>
+          <th scope="col">Days</th>
+          <th scope="col">Times</th>
+          <th scope="col">Students</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @program %>
+      </tbody>
+    </table>
 
-<div>
-  <%= link_to "Edit this program", edit_program_path(@program) %> |
-  <%= link_to "Back to programs", programs_path %>
+    <div>
+      <button class="btn btn-secondary">
+        <%= link_to "Back to programs", programs_path, style: "color:white; text-decoration: none;" %>
+      </button>
 
-  <%= button_to "Destroy this program", @program, method: :delete %>
+      <button class="btn btn-danger">
+        <%= link_to "Destroy this Program", @program, method: :delete, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete }, style: "color:white; text-decoration: none;" %>
+      </button>
+    </div>
+  </div>
 </div>

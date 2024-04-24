@@ -1,10 +1,45 @@
-<p style="color: green"><%= notice %></p>
+<div class="card shadow mb-4 p-4">
+  <div class="card-body">
+    <!--<p style="color: green"><%#= notice %></p>-->
 
-<%= render @school %>
+    <!---->
+    <%#= render @school %>
+    <!--
+    <div>
+      <%#= link_to "Edit this school", edit_school_path(@school) %> |-->
+      <%#= link_to "Back to schools", schools_path %>
+    <!---->
+      <%#= button_to "Destroy this school", @school, method: :delete %>
+    <!--</div>
+    -->
 
-<div>
-  <%= link_to "Edit this school", edit_school_path(@school) %> |
-  <%= link_to "Back to schools", schools_path %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">School Name:</th>
+          <th scope="col">Address:</th>
+          <th scope="col">Action:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @school.name %></td>
+          <td><%= @school.address %></td>
+          <td>
+            <button class="btn btn-secondary">
+              <%= link_to "Edit", edit_school_path(@school.id), style: "color: white; text-decoration: none;" %>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-  <%= button_to "Destroy this school", @school, method: :delete %>
+    <div>
+      <button class="btn btn-secondary"><%= link_to "Back to schools", schools_path, style: "color:white; text-decoration: none;" %></button>
+
+      <button class="btn btn-danger">
+        <%= link_to "Destroy this school", @school, method: :delete, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete }, style: "color:white; text-decoration: none;" %>
+      </button>
+    </div>
+  </div>
 </div>

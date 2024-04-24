@@ -1,92 +1,63 @@
+ <style>
+
+th, td {
+  font-size: 14px;
+}
+
+
+
+ </style>
 <div id="<%= dom_id student %>">
-  <p>
-    <strong>First name:</strong>
-    <%= student.first_name %>
-  </p>
 
-  <p>
-    <strong>Last name:</strong>
-    <%= student.last_name %>
-  </p>
-
-  <p>
-    <strong>School:</strong>
-    <%= student.school_id%>
-  </p>
-
-  <p>
-    <strong>Parent first name:</strong>
-    <%= student.parent_first_name %>
-  </p>
-
-  <p>
-    <strong>Parent last name:</strong>
-    <%= student.parent_last_name %>
-  </p>
-
-  <p>
-    <strong>Parent relationship:</strong>
-    <%= student.parent_relationship %>
-  </p>
-
-  <p>
-    <strong>Parent phone number:</strong>
-    <%= student.parent_phone_number %>
-  </p>
-
-  <p>
-    <strong>Emergency first name:</strong>
-    <%= student.emergency_first_name %>
-  </p>
-
-  <p>
-    <strong>Emergency last name:</strong>
-    <%= student.emergency_last_name %>
-  </p>
-
-  <p>
-    <strong>Emergency phone:</strong>
-    <%= student.emergency_phone %>
-  </p>
-
-  <p>
-    <strong>Pre survey:</strong>
-    <%= student.pre_survey %>
-  </p>
-
-  <p>
-    <strong>Post survey:</strong>
-    <%= student.post_survey %>
-  </p>
-
-  <p>
-    <strong>Interest survey:</strong>
-    <%= student.interest_survey %>
-  </p>
-
-  <p>
-    <strong>Iep or 504:</strong>
-    <%= student.iep_or_504 %>
-  </p>
-
-  <p>
-    <strong>Progress report 1:</strong>
-    <%= student.progress_report_1 %>
-  </p>
-
-  <p>
-    <strong>Progress report 2:</strong>
-    <%= student.progress_report_2 %>
-  </p>
-
-  <p>
-    <strong>Progress report 3:</strong>
-    <%= student.progress_report_3 %>
-  </p>
-
-  <p>
-    <strong>Progress report 4:</strong>
-    <%= student.progress_report_4 %>
-  </p>
-
+<div class="accordion-item mb-2">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#student<%= student.id %>" aria-expanded="false" aria-controls="student<%=student.id%>">
+        <%= student.full_name %>
+      </button>
+    </h2>
+    <div id="student<%= student.id %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+        <div id="students">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">School</th>
+                <th scope="col">Parent/Guardian First Name</th>
+                <th scope="col">Parent/Guardian Last Name</th>
+                <th scope="col">Parent/Guardian Relationship</th>
+                <th scope="col">Parent/Guardian Phone # </th>
+                <th scope="col">Emergency Contact First Name</th>
+                <th scope="col">Emergency Contact Last Name</th>
+                <th scope="col">Emergency Phone #</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= student.first_name%></td>
+                <td><%= student.last_name %></td>
+                <td><%= student.school.name %></td>
+                <td><%= student.parent_first_name %></td>
+                <td><%= student.parent_last_name %></td>
+                <td><%= student.parent_relationship %></td>
+                <td><%= student.parent_phone_number %></td>
+                <td><%= student.emergency_first_name %></td>
+                <td><%= student.emergency_last_name %></td>
+                <td><%= student.emergency_phone %></td>
+                <td>
+                  <div>
+                    <button class="btn btn-secondary">
+                      <%= link_to "Show", student, style: "color:white; text-decoration: none;" %>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>      
+      </div>
+    </div>
+  </div>
 </div>

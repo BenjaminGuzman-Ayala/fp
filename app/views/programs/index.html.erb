@@ -1,14 +1,85 @@
-<p style="color: green"><%= notice %></p>
+<style>
 
-<h1>Programs</h1>
 
-<div id="programs">
-  <% @programs.each do |program| %>
-    <%= render program %>
-    <p>
-      <%= link_to "Show this program", program %>
-    </p>
+.card-title {
+  font-size: 24px; /* Increase font size for the title */
+  font-weight: bold; /* Apply bold font weight */
+  color: #333; /* Dark text color */
+}
+
+.card-text {
+  font-size: 16px; /* Adjust font size for the text content */
+  line-height: 1.5; /* Increase line height for better readability */
+}
+
+.btn {
+  color: #fff; /* White text color */
+  border: none; /* Remove button border */
+  border-radius: 5px; /* Apply border radius */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+
+h1 {
+  color: white;
+  mix-blend-mode: difference;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+</style>
+<div class="card p-4 mb-4 shadow">
+  <div class="card-body">
+    <p style="color: green"><%= notice %></p>
+
+    <h1>Programs</h1>
+
+    <div style="display: flex; gap: 1rem; align-items: center; margin-left: auto; margin-bottom: 2rem; justify-content: flex-end;">
+<div>
+  <%= search_form_for @q do |f| %>
+
+    <%= f.text_field :school_name_cont, class: "p-1", :placeholder => "Type school name" %>
+
+    <%= f.submit :class => "btn btn-primary btn-block" %>
+
+   <!-- <a href="/students">Clear filters</a>-->
+   <button class="btn btn-danger" style="margin-right: 5px;">
+    <%= link_to "Clear", students_path, style: "color:white; text-decoration: none;" %>
+  </button>
   <% end %>
-</div>
+  </div>
+    </div>
 
-<%= link_to "New program", new_program_path %>
+    <div id="programs">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Facilitator</th>
+            <th scope="col">Curriculum</th>
+            <th scope="col">Season</th>
+            <th scope="col">Days</th>
+            <th scope="col">Times</th>
+            <th scope="col">Students</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @programs.each do |program| %>
+            <%= render program %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+    
+
+
+
+
+    <button type="button" class="btn btn-primary" style="margin-bottom: 1rem;">
+      <%= link_to "Create new program", new_program_path, style: "color: white; text-decoration: none;" %>
+    </button>
+  </div>
+</div>

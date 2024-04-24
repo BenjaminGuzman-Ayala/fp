@@ -3,7 +3,8 @@
 <%= render "form", student: @student %>
 
 <br>
-
-<div>
-  <%= link_to "Back to students", students_path %>
+<div class="mb-4">
+  <button class="btn btn-secondary" style="margin-right: 5px;">
+    <%= link_to "Back to students", students_path, style: "color:white; text-decoration: none;" %>
+  </button>
 </div>

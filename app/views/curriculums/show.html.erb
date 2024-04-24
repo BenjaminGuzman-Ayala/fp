@@ -1,10 +1,46 @@
-<p style="color: green"><%= notice %></p>
+<!--<p style="color: green"><%#= notice %></p>
 
-<%= render @curriculum %>
-
+<%#= render @curriculum %>-->
+<!--
 <div>
-  <%= link_to "Edit this curriculum", edit_curriculum_path(@curriculum) %> |
-  <%= link_to "Back to curriculums", curriculums_path %>
+  <%#= link_to "Edit this curriculum", edit_curriculum_path(@curriculum) %> |-->
+  <%#= link_to "Back to curriculums", curriculums_path %>
+<!---->
+  <%#= button_to "Destroy this curriculum", @curriculum, method: :delete %>
+<!--</div>-->
+<div class="card mb-4 p-4 shadow">
+  <div class="card-body">
+    <p style="color: green"><%= notice %></p>
+    
+    <div id="tablecontainer" style="overflow-x: auto; white-space: nowrap; max-width: 100%;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Curriculum name:</th>
+            <th scope="col">Curriculum grade level:</th>
+            <th scope="col">Action:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @curriculum.name %></td>
+            <td><%= @curriculum.grade_level %></td>
+            <td style="width: 200px">
+              <button class="btn btn-secondary">
+                <%= link_to "Edit", edit_curriculum_path(@curriculum.id), style: "color: white; text-decoration: none;" %>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <%= button_to "Destroy this curriculum", @curriculum, method: :delete %>
+    <div style="display: flex;">
+      <button class="btn btn-secondary" style="margin-right: 5px;">
+        <%= link_to "Back to curriculums", curriculums_path, style: "color:white; text-decoration: none;" %>
+      </button>
+  
+      <%= button_to "Destroy this curriculum", @curriculum, method: :delete, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete }, class: "btn btn-danger", style: "color:white; text-decoration: none;" %>
+    </div>
+  </div>
 </div>

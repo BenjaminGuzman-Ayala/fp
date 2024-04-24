@@ -1,14 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<div class="card mb-4 p-4 shadow">
+  <div class="card-body">
+    <p style="color: green"><%= notice %></p>
+    <h1>Curriculums</h1>
 
-<h1>Curriculums</h1>
+    <div id="curriculums">
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <% @curriculums.each do |curriculum| %>
+          <%= render curriculum %>
+          <p></p>
+        <% end %>
+      </div>
+    </div>
 
-<div id="curriculums">
-  <% @curriculums.each do |curriculum| %>
-    <%= render curriculum %>
-    <p>
-      <%= link_to "Show this curriculum", curriculum %>
-    </p>
-  <% end %>
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Create new curriculum", new_curriculum_path, style: "text-decoration: none; color: white;" %>
+    </button>
+  </div>
 </div>
-
-<%= link_to "New curriculum", new_curriculum_path %>
+<%#= link_to "New curriculum", new_curriculum_path %>
+<!---->

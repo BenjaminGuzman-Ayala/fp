@@ -1,27 +1,36 @@
-<%= form_with(model: school) do |form| %>
-  <% if school.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(school.errors.count, "error") %> prohibited this school from being saved:</h2>
+<div class="card p-4 mb-4 shadow">
+  <div class="card-body">
+    <%= form_with(model: school) do |form| %>
+      <% if school.errors.any? %>
+        <div class="alert alert-danger">
+          <h2><%= pluralize(school.errors.count, "error") %> prohibited this school from being saved:</h2>
 
-      <ul>
-        <% school.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% school.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+      <div class="row g-3">
+        <div class="col">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= form.label :address %>
+          <%= form.text_field :address, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col">
+          <%= form.submit class: "btn btn-dark mt-3" %>
+        </div>
+        
+        
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :address, style: "display: block" %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -1,76 +1,61 @@
-<%= form_with(model: @program) do |form| %>
-  <% if program.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(program.errors.count, "error") %> prohibited this program from being saved:</h2>
+<style>
 
-      <ul>
-        <% program.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+#german {
+  max-width: 800px;
+}
+
+
+</style>
+
+<div class="container mt-5" id="german">
+  <div class="card p-4 mb-4 shadow">
+    <div class="card-body">
+      <%= form_with(model: @program) do |form| %>
+        <% if program.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(program.errors.count, "error") %> prohibited this program from being saved:</h2>
+
+            <ul>
+              <% program.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <%= form.label :season, "What semester is the program?" %>
+            <%= form.text_field :season, class: "form-control" %>
+
+            <%= form.label :days %>
+            <%= form.text_field :days, class: "form-control" %>
+
+            <%= form.label :times %>
+            <%= form.text_field :times, class: "form-control" %>
+
+            <%= form.label :user_id, "Select Facilitators" %>
+            <%= form.collection_select(:user_id, User.where(facilitator: true), :id, :full_name, {}, { multiple: false, class: "form-control" }) %>
+
+            <%= form.label :school_id, "Select Schools" %>
+            <%= form.collection_select(:school_id, School.all, :id, :name, {}, { multiple: false, class: "form-control" }) %>
+
+            <%= form.label :curriculum_id, "Select Curriculum" %>
+            <%= form.collection_select(:curriculum_id, Curriculum.all, :id, :name, {}, { multiple: false, class: "form-control" }) %>
+
+            <%= form.label :student_ids, "Select Students" %>
+            <%= form.collection_select(:student_ids, Student.all, :id, :full_name, {}, {multiple: true, class: "form-control"}) %>
+          </div>
+        </div>
+        <div class="col mt-3">
+          <%= form.submit class: "btn btn-dark" %>
+        </div>
+        <br>
+        <div class="col">
+          <button class="btn btn-secondary" style="margin-right: 5px;">
+            <%= link_to "Back to programs", programs_path, style: "color:white; text-decoration: none;" %>
+          </button>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div>
-  <%= form.label :user_id, "Select Facilitators",style: "display: block" %>
-  <%= form.collection_select(:user_id, User.where(facilitator: true), :id, :full_name, {}, { multiple: false }) %>
   </div>
-<!--  <div>-->
-    <%#= form.label :user_id, style: "display: block" %>
-    <%#= form.text_field :user_id %>
-<!--  </div>-->
-
-
-  <div>
-  <%= form.label :school_id, "Select Schools",style: "display: block" %>
-  <%= form.collection_select(:school_id, School.all, :id, :name, {}, { multiple: false }) %>
-  </div>
-
-  <div>
-  <%= form.label :curriculum_id, "Select Curriculum",style: "display: block" %>
-  <%= form.collection_select(:curriculum_id, Curriculum.all, :id, :name, {}, { multiple: false }) %>
-  </div>
-
-<!--  <div>-->
-    <%#= form.label :curriculum_id, style: "display: block" %>
-    <%#= form.text_field :curriculum_id %>
-<!--  </div>-->
-
-  <div>
-
-<%= form.label :student_ids, "Select Students" %>
-  <%= form.collection_select :student_ids, Student.all, :id, :full_name, {}, multiple: true %>
- <!--   <h3>Select Students to Add:</h3>-->
-  <%# Student.all.each do |student| %>
-    <%#= check_box_tag 'student_ids[]', student.id %>
-    <%#= label_tag "student_ids_#{student.id}", student.full_name %><br>
-  <%# end %>
-
-  <%#= form.label :student_id, "Select Students", style: "display: block"%>
-  <%#= form.collection_select(:student_id, Student.all, :id, :full_name, {:include_hidden => false}, { multiple: true }) %>
-   </div>
-
-<!--  <div>-->
-    <%#= form.label :student_id, style: "display: block" %>
-    <%#= form.text_field :student_id %>
-<!--  </div>-->
-
-  <div>
-    <%= form.label :season, style: "display: block" %>
-    <%= form.text_field :season %>
-  </div>
-
-  <div>
-    <%= form.label :days, style: "display: block" %>
-    <%= form.text_field :days %>
-  </div>
-
-  <div>
-    <%= form.label :times, style: "display: block" %>
-    <%= form.text_field :times %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

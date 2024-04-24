@@ -1,14 +1,31 @@
-<p style="color: green"><%= notice %></p>
+<div class="card shadow p-4 mb-4">
+  <div class="card-body">
+    <p style="color: green"><%= notice %></p>
 
-<h1>Students</h1>
+    <h1>Students</h1>
 
-<div id="students">
-  <% @students.each do |student| %>
-    <%= render student %>
-    <p>
-      <%= link_to "Show this student", student %>
-    </p>
-  <% end %>
+    <div style="display: flex; gap: 1rem; align-items: center; margin-left: auto; margin-bottom: 2rem; justify-content: flex-end;">
+      <div>
+        <%= search_form_for @q do |f| %>
+          <%= f.text_field :first_name_or_school_name_cont, class: "p-1", :placeholder => "Type student or school name" %>
+          <%= f.submit :class => "btn btn-primary btn-block" %>
+          <button class="btn btn-danger" style="margin-right: 5px;">
+            <%= link_to "Clear", students_path, style: "color:white; text-decoration: none;" %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="students">
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <% @students.each do |student| %>
+          <%= render student %>
+        <% end %>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary">
+      <%= link_to "Create new student", new_student_path, style: "text-decoration: none; color: white;" %>
+    </button>
+  </div>
 </div>
-
-<%= link_to "New student", new_student_path %>
