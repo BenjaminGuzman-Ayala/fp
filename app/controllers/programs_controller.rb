@@ -11,6 +11,7 @@ class ProgramsController < ApplicationController
 
   end
 
+  # delete commented out code
   # GET /programs/1 or /programs/1.json
   # def add_students
   #   @program = Program.find(params[:id])
@@ -36,7 +37,7 @@ class ProgramsController < ApplicationController
   # POST /programs or /programs.json
   def create
     @program = Program.new(program_params)
- 
+
     respond_to do |format|
       if @program.save
         format.html { redirect_to program_url(@program), notice: "Program was successfully created." }
@@ -81,5 +82,5 @@ class ProgramsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def program_params
       params.require(:program).permit(:user_id, :school_id, :curriculum_id, :season, :days, :times, :student_id, :program_id, :id, student_ids: [])
-    end    
+    end
 end
